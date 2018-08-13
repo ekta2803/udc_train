@@ -30,7 +30,7 @@ def saveToCSV(result, filename="categories_data.csv"):
 def main():
     client = bigquery.Client()
     query_job = client.query("""
-        select q.id,q.title,q.body as question_body,q.tags ,q.accepted_answer_id,a.body as answer_body from 
+        select q.id,q.title,q.body as question_body,q.tags ,q.accepted_answer_id,a.body as answer_body, a.score from 
         `bigquery-public-data.stackoverflow.posts_questions`  q 
         join `bigquery-public-data.stackoverflow.posts_answers` a on q.accepted_answer_id = a.id;""")
 
